@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/17"
+            fx:controller="org.example.agendafacil.HelloController">
+
+    <!-- TOPO - Cabeçalho com logo e botão -->
+    <top>
+        <HBox spacing="20" style="-fx-background-color: #4285F4; -fx-padding: 12; -fx-alignment: CENTER_LEFT;">
+            <Label text="  ▲ AgendaFácil" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button text="+ Novo evento" style="-fx-background-color: white; -fx-text-fill: #4285F4; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 5;" />
+        </HBox>
+    </top>
+
+    <!-- CENTRO - Grade de agenda com eventos -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label text="21 a 27 de mai." style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <GridPane hgap="10" vgap="10" style="-fx-grid-lines-visible: true;">
+                <!-- Cabeçalhos dos dias -->
+                <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label text="Segunda-feira" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Terça-feira" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <Label text="Quarta-feira" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                <Label text="Quinta-feira" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                <Label text="Sexta" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                <Label text="Sábado" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                <Label text="Domingo" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+
+                <!-- Horários à esquerda -->
+                <Label text="07:00" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="08:00" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label text="09:00" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label text="10:00" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label text="11:00" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <Label text="12:00" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                <Label text="13:00" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                <Label text="14:00" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+
+                <!-- Eventos coloridos -->
+                <Label text="Reunião" GridPane.columnIndex="3" GridPane.rowIndex="1" style="-fx-background-color: #F4B400; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
+                <Label text="Consulta" GridPane.columnIndex="3" GridPane.rowIndex="2" style="-fx-background-color: #0F9D58; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
+                <Label text="Academia" GridPane.columnIndex="2" GridPane.rowIndex="2" style="-fx-background-color: #AB47BC; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
+                <Label text="Almoço com Ana" GridPane.columnIndex="4" GridPane.rowIndex="3" style="-fx-background-color: #8E24AA; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
+                <Label text="Prazo do projeto" GridPane.columnIndex="2" GridPane.rowIndex="4" style="-fx-background-color: #0F9D58; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
+            </GridPane>
+        </VBox>
+    </center>
+
+    <!-- DIREITA - Lista de tarefas e lembretes -->
+    <right>
+        <VBox spacing="20" style="-fx-padding: 20; -fx-background-color: #FAFAFA;">
+            <Label text="Lista de Tarefas" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+            <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <CheckBox text="Comprar passagens" />
+                <CheckBox text="Enviar relatorio" />
+                <CheckBox text="Ligar para João" />
+            </VBox>
+
+            <Label text="Lembretes" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+            <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <CheckBox text="Tomar medicamento" />
+                <CheckBox text="Enviar documentos" />
+            </VBox>
+        </VBox>
+    </right>
+</BorderPane>
