@@ -1,72 +1,295 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/17"
-            fx:controller="org.example.agendafacil.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style/estiloagenda.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
-    <!-- TOPO - Cabeçalho com logo e botão -->
     <top>
-        <HBox spacing="20" style="-fx-background-color: #4285F4; -fx-padding: 12; -fx-alignment: CENTER_LEFT;">
-            <Label text="  ▲ AgendaFácil" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
-            <Pane HBox.hgrow="ALWAYS" />
-            <Button text="+ Novo evento" style="-fx-background-color: white; -fx-text-fill: #4285F4; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 5;" />
-        </HBox>
+        <StackPane>
+            <children>
+                <!-- Barra principal -->
+                <ToolBar prefHeight="119.0" prefWidth="1280.0" style="-fx-background-color: #61a1f1;">
+                    <items>
+                        <Button fx:id="btnImagem" mnemonicParsing="false" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="">
+                            <graphic>
+                                <ImageView fitHeight="90.0" fitWidth="91.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="@imagens/botaomenu.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <ImageView fitHeight="136.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@imagens/logo.png" />
+                            </image>
+                        </ImageView>
+                        <HBox prefHeight="116.0" prefWidth="22.0" />
+                        <TextField prefHeight="67.0" prefWidth="375.0" style="-fx-background-radius: 20;" />
+                        <Button defaultButton="true" mnemonicParsing="false" prefHeight="105.0" prefWidth="85.0" style="-fx-background-color: transparent;">
+                            <graphic>
+                                <ImageView fitHeight="112.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                                    <image>
+                                        <Image url="@imagens/botaoPesquisa.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </items>
+                </ToolBar>
+
+                <!-- Botão Nova Tarefa flutuante no topo direito -->
+                <HBox alignment="CENTER_RIGHT" StackPane.alignment="TOP_RIGHT">
+                    <padding>
+                        <Insets bottom="0" left="0" right="20" top="0" />
+                    </padding>
+                    <children>
+                        <Button fx:id="btnImagem1" mnemonicParsing="false" prefHeight="102.0" prefWidth="310.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Nova Tarefa" textFill="WHITE">
+                            <font>
+                                <Font name="Nirmala UI Bold" size="34.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="83.0" fitWidth="53.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@imagens/botaoadicionar.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </StackPane>
     </top>
-
-    <!-- CENTRO - Grade de agenda com eventos -->
-    <center>
-        <VBox spacing="10" style="-fx-padding: 20;">
-            <Label text="21 a 27 de mai." style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-            <GridPane hgap="10" vgap="10" style="-fx-grid-lines-visible: true;">
-                <!-- Cabeçalhos dos dias -->
-                <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label text="Segunda-feira" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Label text="Terça-feira" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <Label text="Quarta-feira" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                <Label text="Quinta-feira" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                <Label text="Sexta" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-                <Label text="Sábado" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-                <Label text="Domingo" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-
-                <!-- Horários à esquerda -->
-                <Label text="07:00" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label text="08:00" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <Label text="09:00" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <Label text="10:00" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                <Label text="11:00" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                <Label text="12:00" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                <Label text="13:00" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                <Label text="14:00" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-
-                <!-- Eventos coloridos -->
-                <Label text="Reunião" GridPane.columnIndex="3" GridPane.rowIndex="1" style="-fx-background-color: #F4B400; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
-                <Label text="Consulta" GridPane.columnIndex="3" GridPane.rowIndex="2" style="-fx-background-color: #0F9D58; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
-                <Label text="Academia" GridPane.columnIndex="2" GridPane.rowIndex="2" style="-fx-background-color: #AB47BC; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
-                <Label text="Almoço com Ana" GridPane.columnIndex="4" GridPane.rowIndex="3" style="-fx-background-color: #8E24AA; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
-                <Label text="Prazo do projeto" GridPane.columnIndex="2" GridPane.rowIndex="4" style="-fx-background-color: #0F9D58; -fx-padding: 6; -fx-background-radius: 5; -fx-text-fill: white;" />
-            </GridPane>
-        </VBox>
-    </center>
-
-    <!-- DIREITA - Lista de tarefas e lembretes -->
     <right>
-        <VBox spacing="20" style="-fx-padding: 20; -fx-background-color: #FAFAFA;">
-            <Label text="Lista de Tarefas" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
-            <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5;">
-                <CheckBox text="Comprar passagens" />
-                <CheckBox text="Enviar relatorio" />
-                <CheckBox text="Ligar para João" />
-            </VBox>
-
-            <Label text="Lembretes" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
-            <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5;">
-                <CheckBox text="Tomar medicamento" />
-                <CheckBox text="Enviar documentos" />
-            </VBox>
-        </VBox>
+        <VBox prefHeight="594.0" prefWidth="291.0" style="-fx-background-color: #61a1f1;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="78.0" prefWidth="298.0" text="TAREFA" textFill="WHITE">
+               <font>
+                  <Font name="Nirmala UI Bold" size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="94.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagens/lapiss.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <ListView editable="true" prefHeight="197.0" prefWidth="291.0" style="-fx-background-color: #61a1f1;" />
+            <Label prefHeight="78.0" prefWidth="298.0" text="LEMBRETE" textFill="WHITE">
+               <font>
+                  <Font name="Nirmala UI Bold" size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="94.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagens/sino.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children></VBox>
     </right>
+   <center>
+       <VBox alignment="TOP_RIGHT" prefHeight="800.0">
+
+           <!-- Cabeçalho fixo (dias da semana) -->
+           <GridPane fx:id="gridHeader" alignment="CENTER" hgap="0" styleClass="grid-agenda-header" vgap="0" GridPane.rowIndex="0">
+
+               <!-- 1ª coluna vazia para alinhar com os horários -->
+               <Label text="" GridPane.rowIndex="1" />
+
+               <!-- Dias da semana -->
+               <Label alignment="CENTER" prefHeight="53.0" prefWidth="98.0" styleClass="label-dia" text="SEG" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="61.0" prefWidth="98.0" styleClass="label-dia" text="TER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="54.0" prefWidth="98.0" styleClass="label-dia" text="QUA" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="62.0" prefWidth="98.0" styleClass="label-dia" text="QUI" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="53.0" prefWidth="98.0" styleClass="label-dia" text="SEX" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="53.0" prefWidth="98.0" styleClass="label-dia" text="SAB" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+               <Label alignment="CENTER" prefHeight="67.0" prefWidth="98.0" styleClass="label-dia" text="DOM" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="Nirmala UI Bold" size="20.0" />
+                   </font>
+               </Label>
+
+               <!-- Colunas fixas para manter largura igual -->
+               <columnConstraints>
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+                   <ColumnConstraints prefWidth="120.0" />
+               </columnConstraints>
+
+               <rowConstraints>
+                   <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+               <RowConstraints maxHeight="47.39999999999999" minHeight="47.39999999999999" prefHeight="47.39999999999999" />
+               </rowConstraints>
+           </GridPane>
+
+           <!-- Conteúdo com rolagem -->
+           <ScrollPane fx:id="scrollAgenda" fitToWidth="true" maxHeight="550.0" prefHeight="550.0" prefWidth="780.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+               <content>
+                   <GridPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="1686.0" prefWidth="740.0" style="-fx-border-color: black;" styleClass="grid-pane" vgap="10.0">
+                       <!-- COLUNAS -->
+                       <columnConstraints>
+                           <ColumnConstraints prefWidth="120.0" />
+                           <ColumnConstraints prefWidth="120.0" />
+                           <ColumnConstraints prefWidth="120.0" />
+                           <ColumnConstraints maxWidth="96.0" minWidth="88.0" prefWidth="88.0" />
+                           <ColumnConstraints maxWidth="104.0" minWidth="96.0" prefWidth="104.0" />
+                           <ColumnConstraints prefWidth="120.0" />
+                           <ColumnConstraints prefWidth="120.0" />
+                           <ColumnConstraints prefWidth="120.0" />
+                       </columnConstraints>
+
+                       <!-- LINHAS (somente os horários) -->
+                       <!-- LINHAS -->
+                       <rowConstraints>
+                           <!-- Linha 0: Cabeçalho dos dias -->
+                           <RowConstraints prefHeight="50.0" />
+                           <!-- Linhas 1 a 18: horários até 12 AM -->
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints maxHeight="85.99996948242188" minHeight="85.99996948242188" prefHeight="85.99996948242188" />
+                           <RowConstraints maxHeight="74.00003051757812" minHeight="74.00003051757812" prefHeight="74.00003051757812" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints prefHeight="80.0" />
+                       </rowConstraints>
+                       <!-- Linhas horizontais simuladas com Pane -->
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="1" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="2" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="3" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="4" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="5" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="6" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="7" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="8" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="9" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="10" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="11" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="12" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="13" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="14" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="15" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="16" />
+                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="17" />
+
+
+                       <!-- Horários -->
+                       <Label text="7 AM" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                       <Label text="8 AM" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                       <Label text="9 AM" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                       <Label text="10 AM" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                       <Label text="11 AM" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                       <Label text="12 PM" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                       <Label text="1 PM" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                       <Label text="2 PM" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                       <Label text="3 PM" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                       <Label text="4 PM" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                       <Label text="5 PM" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                       <Label text="6 PM" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+                       <Label text="7 PM" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+                       <Label text="8 PM" GridPane.columnIndex="0" GridPane.rowIndex="13" />
+                       <Label text="9 PM" GridPane.columnIndex="0" GridPane.rowIndex="14" />
+                       <Label text="10 PM" GridPane.columnIndex="0" GridPane.rowIndex="15" />
+                       <Label text="11 PM" GridPane.columnIndex="0" GridPane.rowIndex="16" />
+                       <Label text="12 AM" GridPane.columnIndex="0" GridPane.rowIndex="17" />
+
+
+                       <!-- Tarefas -->
+                       <Label prefHeight="41.0" prefWidth="84.0" style="-fx-background-color: #ff66cc; -fx-background-radius: 20; -fx-text-fill: black; -fx-padding: 5 10;" text="Estudar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+                       <Label prefHeight="49.0" prefWidth="84.0" style="-fx-background-color: #00cfff; -fx-background-radius: 20; -fx-text-fill: black; -fx-padding: 5 10;" text="Almoço" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                   </GridPane>
+               </content>
+           </ScrollPane>
+       </VBox>
+
+
+   </center>
+   <left>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="TOP_RIGHT">
+         <buttons>
+            <VBox alignment="CENTER_LEFT" prefHeight="594.0" prefWidth="250.0">
+               <children>
+                   <Label alignment="TOP_CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="184.0" style="-fx-background-color: #61a1f1; -fx-background-radius: 30; -fx-padding: 5 10 0 10;" text="30 Jun - 6 Jul " textFill="WHITE">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="24.0" />
+                     </font></Label>
+                  <VBox prefHeight="509.0" prefWidth="190.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="97.0" style="-fx-background-color: tras;">
+                                 <graphic>
+                                    <ImageView fitHeight="76.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imagens/seta.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="84.0" prefWidth="131.0" style="-fx-background-color: tras;">
+                                 <graphic>
+                                    <ImageView fitHeight="76.0" fitWidth="100.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imagens/seta.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+               </children>
+            </VBox>
+         </buttons></ButtonBar>
+   </left>
 </BorderPane>

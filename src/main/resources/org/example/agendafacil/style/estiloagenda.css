@@ -1,0 +1,68 @@
+/* Remove fundo e espaços extras da ScrollPane */
+.scroll-pane {
+    -fx-max-height: 640px; /* ou o valor real que representa 7 linhas */
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Remove fundo do conteúdo da ScrollPane também */
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+
+}
+
+/* Remove bordas invisíveis da GridPane */
+.grid-pane {
+    -fx-border-color: black transparent transparent transparent;
+       -fx-border-width: 1px 0 0 0;
+       -fx-border-style: dashed;
+       -fx-padding: 5px;
+}
+
+/* Labels padrão da grade (horários e dias) */
+.label {
+    -fx-padding: 0 5 0 5;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+}
+.label-dia {
+    -fx-text-fill: #333333;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+/* Tarefa estilizada */
+.label-tarefa {
+    -fx-background-radius: 20;
+    -fx-text-fill: black;
+    -fx-padding: 5 10;
+    -fx-alignment: center;
+}
+
+/* Exemplo: cor específica de tarefa */
+.estudar {
+    -fx-background-color: #ff66cc;
+}
+
+.almoco {
+    -fx-background-color: #00cfff;
+}
+.grid-com-linhas {
+    -fx-border-color: black transparent transparent transparent;
+       -fx-border-width: 1px 0 0 0;
+       -fx-border-style: dashed;
+       -fx-padding: 5px;
+}
+.grid-com-linhas .label {
+    -fx-border-color: black transparent transparent transparent; /* Apenas linha superior preta */
+    -fx-border-width: 1px 0 0 0;
+    -fx-border-style: dashed;
+    -fx-padding: 5px;
+}
+.linha-horario {
+     -fx-border-color: black transparent transparent transparent;
+     -fx-border-width: 1px 0 0 0;
+     -fx-border-style: solid;
+     -fx-background-color: transparent;
+     -fx-z-index: 1;
+
+}
