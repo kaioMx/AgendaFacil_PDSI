@@ -1,4 +1,4 @@
-package org.example.agendafacil;
+package org.example.agendafacil.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
