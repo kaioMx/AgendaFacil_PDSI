@@ -2,17 +2,14 @@ package org.example.agendafacil;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.util.Callback;
-import javafx.util.StringConverter;
 
 public class TarefaController {
 
     @FXML
     private VBox novaCategoriaBox;
+
     @FXML
     private TextField tituloField, horaInicioField, horaFimField;
 
@@ -29,55 +26,17 @@ public class TarefaController {
     private TextField novaCategoriaField;
 
     @FXML
-    private ComboBox<String> corCategoriaComboBox;
-
-    // Paleta de cores disponíveis
-    private final String[] coresDisponiveis = {
-            "#e74c3c", "#f39c12", "#2ecc71", "#3498db", "#9b59b6",
-            "#1abc9c", "#34495e", "#e67e22", "#d35400", "#7f8c8d"
-    };
+    private ColorPicker corCategoriaPicker;
 
     @FXML
     public void initialize() {
-        // Preenche ComboBox de cores
-        corCategoriaComboBox.getItems().addAll(coresDisponiveis);
+        // Inicialização extra se precisar no futuro
+    }
 
-        // Exibe cor visualmente nas opções
-        corCategoriaComboBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                return new ListCell<>() {
-                    @Override
-                    protected void updateItem(String cor, boolean empty) {
-                        super.updateItem(cor, empty);
-                        if (cor == null || empty) {
-                            setText(null);
-                            setGraphic(null);
-                        } else {
-                            Rectangle rect = new Rectangle(20, 20, Color.web(cor));
-                            setText(cor);
-                            setGraphic(rect);
-                        }
-                    }
-                };
-            }
-        });
-
-        // Também mostra a cor no campo selecionado
-        corCategoriaComboBox.setButtonCell(new ListCell<>() {
-            @Override
-            protected void updateItem(String cor, boolean empty) {
-                super.updateItem(cor, empty);
-                if (cor == null || empty) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    Rectangle rect = new Rectangle(20, 20, Color.web(cor));
-                    setText(cor);
-                    setGraphic(rect);
-                }
-            }
-        });
+    @FXML
+    private void mostrarCamposNovaCategoria() {
+        novaCategoriaBox.setVisible(true);
+        novaCategoriaBox.setManaged(true);
     }
 
     public void salvarTarefa() {
@@ -89,12 +48,12 @@ public class TarefaController {
 
         String categoriaSelecionada = categoriaComboBox.getSelectionModel().getSelectedItem();
         String novaCategoria = novaCategoriaField.getText();
-        String corSelecionada = corCategoriaComboBox.getValue();
+        String corSelecionada = corCategoriaPicker.getValue() != null ? toHex(corCategoriaPicker.getValue()) : null;
 
-        // Caso o usuário tenha criado uma nova categoria
+        // Se criou nova categoria
         if (!novaCategoria.isBlank() && corSelecionada != null) {
             categoriaComboBox.getItems().add(novaCategoria + " (" + corSelecionada + ")");
-            categoriaComboBox.getSelectionModel().selectLast(); // seleciona a que acabou de adicionar
+            categoriaComboBox.getSelectionModel().selectLast();
             System.out.println("Nova categoria criada: " + novaCategoria + " com cor " + corSelecionada);
         }
 
@@ -117,12 +76,15 @@ public class TarefaController {
         dataPicker.setValue(null);
         novaCategoriaField.clear();
         categoriaComboBox.getSelectionModel().clearSelection();
-        corCategoriaComboBox.getSelectionModel().clearSelection();
+        corCategoriaPicker.setValue(null);
+        novaCategoriaBox.setVisible(false);
+        novaCategoriaBox.setManaged(false);
     }
 
-    @FXML
-    private void mostrarCamposNovaCategoria() {
-        novaCategoriaBox.setVisible(true);
-        novaCategoriaBox.setManaged(true);
+    private String toHex(Color color) {
+        return String.format("#%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
     }
 }

@@ -1,6 +1,6 @@
 # Default ignored files
 /shelf/
-/workspace.xml
+/src/main/resources/org/example/agendafacil/style/workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
 # Environment-dependent path to Maven home directory
