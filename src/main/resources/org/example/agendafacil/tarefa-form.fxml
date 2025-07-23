@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_LEFT" prefHeight="650.0" prefWidth="700.0" spacing="10"
+      style="-fx-padding: 20; -fx-background-color: #61a1f1;"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.agendafacil.TarefaController">
+
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Cadastrar Tarefa" textFill="WHITE" />
+
+    <HBox spacing="10">
+        <Label text="Título:" textFill="WHITE" />
+        <TextField fx:id="tituloField" promptText="Ex: Reunião com equipe" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Data:" textFill="WHITE" />
+        <DatePicker fx:id="dataPicker" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Hora Início:" textFill="WHITE" />
+        <TextField fx:id="horaInicioField" promptText="08:00" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Hora Fim:" textFill="WHITE" />
+        <TextField fx:id="horaFimField" promptText="09:00" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Descrição:" textFill="WHITE" />
+        <TextArea fx:id="descricaoArea" prefRowCount="3" wrapText="true" />
+    </HBox>
+
+    <VBox spacing="5">
+        <Label text="Categoria:" textFill="WHITE" />
+        <ComboBox fx:id="categoriaComboBox" promptText="Selecionar categoria existente" />
+
+        <Button text="Criar uma nova categoria +" onAction="#mostrarCamposNovaCategoria" />
+
+        <!-- CAMPOS QUE SERÃO ESCONDIDOS INICIALMENTE -->
+        <VBox fx:id="novaCategoriaBox" spacing="10" visible="false" managed="false">
+            <HBox spacing="10">
+                <Label text="Nome:" textFill="WHITE" />
+                <TextField fx:id="novaCategoriaField" promptText="Ex: Trabalho, Estudo..." />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Cor da categoria:" textFill="WHITE" />
+                <ComboBox fx:id="corCategoriaComboBox" prefWidth="200" promptText="Selecionar cor" />
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <HBox spacing="10">
+        <Button onAction="#salvarTarefa" text="Salvar Tarefa" />
+        <Button onAction="#limparFormulario" text="Limpar Campos" />
+    </HBox>
+</VBox>
