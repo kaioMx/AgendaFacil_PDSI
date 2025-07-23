@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.ColorPicker?>
-<VBox alignment="TOP_LEFT" prefHeight="650.0" prefWidth="700.0" spacing="10" style="-fx-padding: 20; -fx-background-color: #61a1f1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.agendafacil.controller.TarefaController">
+<VBox alignment="TOP_LEFT" prefHeight="650.0" prefWidth="700.0" spacing="10" style="-fx-padding: 20; -fx-background-color: #61a1f1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.agendafacil.TarefaController">
 
     <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Cadastrar Tarefa" textFill="WHITE" />
 
