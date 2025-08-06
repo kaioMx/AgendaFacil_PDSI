@@ -79,6 +79,25 @@
                         </Button>
                     </children>
                 </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0">
+               <padding>
+                  <Insets bottom="0" left="0" right="20" top="0" />
+               </padding>
+               <children>
+                  <Button fx:id="btnNovaTarefa1" mnemonicParsing="false" onAction="#abrirNovaTarefa" prefHeight="102.0" prefWidth="310.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" styleClass="botao-efeito" text="Nova Tarefa" textFill="WHITE">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="34.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="68.0" fitWidth="63.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="botao-efeito">
+                           <image>
+                              <Image url="@imagens/output.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
             </children>
         </StackPane>
     </top>
@@ -179,7 +198,7 @@
            <!-- Conteúdo com rolagem -->
            <ScrollPane fx:id="scrollAgenda" fitToWidth="true" maxHeight="550.0" prefHeight="550.0" prefWidth="780.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
                <content>
-                   <GridPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="1686.0" prefWidth="740.0" style="-fx-border-color: black;" styleClass="grid-pane" vgap="10.0">
+                   <GridPane fx:id="gridAgenda" alignment="CENTER_RIGHT" hgap="10.0" prefHeight="1686.0" prefWidth="740.0" style="-fx-border-color: black;" styleClass="grid-pane" vgap="10.0">
                        <!-- COLUNAS -->
                        <columnConstraints>
                            <ColumnConstraints prefWidth="120.0" />
@@ -219,7 +238,7 @@
                        </rowConstraints>
                        <!-- Linhas horizontais simuladas com Pane -->
                        <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="1" />
-                       <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="2" />
+                       <Pane id="gridAgenda" fx:id="grinPane" styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="2" />
                        <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="3" />
                        <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="4" />
                        <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="5" />
@@ -274,15 +293,15 @@
          <buttons>
             <VBox alignment="CENTER_LEFT" prefHeight="594.0" prefWidth="250.0">
                <children>
-                   <Label alignment="TOP_CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="184.0" style="-fx-background-color: #61a1f1; -fx-background-radius: 30; -fx-padding: 5 10 0 10;" text="30 Jun - 6 Jul " textFill="WHITE">
+                   <Label fx:id="labelPeriodo" alignment="TOP_CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="226.0" style="-fx-background-color: #61a1f1; -fx-background-radius: 30; -fx-padding: 5 10 0 10;" text="30 Jun - 6 Jul " textFill="WHITE">
                      <font>
-                        <Font name="Nirmala UI Bold" size="24.0" />
+                        <Font name="Nirmala UI Bold" size="20.0" />
                      </font></Label>
                   <VBox prefHeight="509.0" prefWidth="190.0">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="97.0" style="-fx-background-color: tras;">
+                              <Button fx:id="semanaAnterior" mnemonicParsing="false" onAction="#semanaAnterior" prefHeight="78.0" prefWidth="97.0" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <ImageView fitHeight="76.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -291,7 +310,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="84.0" prefWidth="131.0" style="-fx-background-color: tras;">
+                              <Button fx:id="proximaSemana" mnemonicParsing="false" onAction="#proximaSemana" prefHeight="84.0" prefWidth="131.0" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <ImageView fitHeight="76.0" fitWidth="100.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                        <image>

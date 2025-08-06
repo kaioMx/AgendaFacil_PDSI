@@ -10,7 +10,7 @@ public class TarefaModel {
     private String horaFim;
     private String status;
     private byte [] somNotificacao;
-
+    private String corCategoria;
     public TarefaModel(){
 
     }
@@ -77,5 +77,12 @@ public class TarefaModel {
 
     public void setSomNotificacao(byte[] somNotificacao) {
         this.somNotificacao = somNotificacao;
+    }
+    public String getCorCategoria() {
+        return corCategoria;
+    }
+
+    public void setCorCategoria(String corCategoria) {
+        this.corCategoria = corCategoria;
     }
 }
