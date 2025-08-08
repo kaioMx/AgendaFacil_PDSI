@@ -138,104 +138,113 @@
            <GridPane fx:id="gridHeader" alignment="CENTER" hgap="0" styleClass="grid-agenda-header" vgap="0" GridPane.rowIndex="0">
 
                <!-- 1ª coluna vazia para alinhar com os horários -->
-               <Label text="" GridPane.rowIndex="1" />
+               <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
 
                <!-- Dias da semana -->
-               <Label alignment="CENTER" prefHeight="48.0" prefWidth="105.0" styleClass="label-dia" text="SEG" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <Label alignment="CENTER_RIGHT" prefHeight="63.0" prefWidth="120.0" styleClass="label-dia" text="SEG" GridPane.columnIndex="1" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="61.0" prefWidth="98.0" styleClass="label-dia" text="TER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="120.0" styleClass="label-dia" text="TER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="54.0" prefWidth="98.0" styleClass="label-dia" text="QUA" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <Label alignment="CENTER" prefHeight="53.0" prefWidth="120.0" styleClass="label-dia" text="QUA" GridPane.columnIndex="3" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="62.0" prefWidth="98.0" styleClass="label-dia" text="QUI" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <Label alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="120.0" styleClass="label-dia" text="QUI" GridPane.columnIndex="4" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="53.0" prefWidth="98.0" styleClass="label-dia" text="SEX" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <Label alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="120.0" styleClass="label-dia" text="SEX" GridPane.columnIndex="5" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="53.0" prefWidth="98.0" styleClass="label-dia" text="SAB" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <Label alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="120.0" styleClass="label-dia" text="SAB" GridPane.columnIndex="6" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
-               <Label alignment="CENTER" prefHeight="67.0" prefWidth="98.0" styleClass="label-dia" text="DOM" GridPane.columnIndex="7" GridPane.rowIndex="1">
+               <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="120.0" styleClass="label-dia" text="DOM" GridPane.columnIndex="7" GridPane.rowIndex="1">
                    <font>
-                       <Font name="Nirmala UI Bold" size="20.0" />
+                       <Font name="Nirmala UI Bold" size="35.0" />
                    </font>
                </Label>
 
                <!-- Colunas fixas para manter largura igual -->
-               <columnConstraints>
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-                   <ColumnConstraints prefWidth="120.0" />
-               </columnConstraints>
+
 
                <rowConstraints>
                    <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-               <RowConstraints maxHeight="47.39999999999999" minHeight="47.39999999999999" prefHeight="47.39999999999999" />
+               <RowConstraints maxHeight="80" minHeight="47.39999999999999" prefHeight="47.39999999999999" />
                </rowConstraints>
+               <columnConstraints>
+                   <!-- Coluna 0: horários -->
+                   <ColumnConstraints minWidth="80" prefWidth="80" maxWidth="80" />
+
+                   <!-- Colunas 1 a 7: dias da semana -->
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                   <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+               </columnConstraints>
+
            </GridPane>
 
            <!-- Conteúdo com rolagem -->
            <ScrollPane fx:id="scrollAgenda" fitToWidth="true" maxHeight="550.0" prefHeight="550.0" prefWidth="780.0" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
                <content>
-                   <GridPane fx:id="gridAgenda" alignment="CENTER_RIGHT" hgap="10.0" prefHeight="1686.0" prefWidth="740.0" style="-fx-border-color: black;" styleClass="grid-pane" vgap="10.0">
+                   <GridPane fx:id="gridAgenda" alignment="CENTER" hgap="10.0" prefHeight="1686.0" prefWidth="740.0" style="-fx-border-color: black;" styleClass="grid-pane" vgap="10.0">
                        <!-- COLUNAS -->
                        <columnConstraints>
-                           <ColumnConstraints prefWidth="120.0" />
-                           <ColumnConstraints prefWidth="120.0" />
-                           <ColumnConstraints prefWidth="120.0" />
-                           <ColumnConstraints maxWidth="96.0" minWidth="88.0" prefWidth="88.0" />
-                           <ColumnConstraints maxWidth="104.0" minWidth="96.0" prefWidth="104.0" />
-                           <ColumnConstraints prefWidth="120.0" />
-                           <ColumnConstraints prefWidth="120.0" />
-                           <ColumnConstraints prefWidth="120.0" />
+                           <!-- Coluna 0: horários -->
+                           <ColumnConstraints minWidth="80" prefWidth="80" maxWidth="80" />
+
+                           <!-- Colunas 1 a 7: dias da semana -->
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
+                           <ColumnConstraints prefWidth="120.0" hgrow="SOMETIMES" />
                        </columnConstraints>
 
-                       <!-- LINHAS (somente os horários) -->
-                       <!-- LINHAS -->
+
                        <rowConstraints>
                            <!-- Linha 0: Cabeçalho dos dias -->
-                           <RowConstraints prefHeight="50.0" />
-                           <!-- Linhas 1 a 18: horários até 12 AM -->
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints maxHeight="85.99996948242188" minHeight="85.99996948242188" prefHeight="85.99996948242188" />
-                           <RowConstraints maxHeight="74.00003051757812" minHeight="74.00003051757812" prefHeight="74.00003051757812" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
-                           <RowConstraints prefHeight="80.0" />
+                           <RowConstraints minHeight="40.0" prefHeight="40.0" maxHeight="Infinity" />
+
+                           <!-- Linhas de horários (ajustáveis/responsivas) -->
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
+                           <RowConstraints minHeight="60.0" prefHeight="80.0" vgrow="ALWAYS" />
                        </rowConstraints>
+
                        <!-- Linhas horizontais simuladas com Pane -->
                        <Pane styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="1" />
                        <Pane id="gridAgenda" fx:id="grinPane" styleClass="linha-horario" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="2" />
@@ -257,24 +266,24 @@
 
 
                        <!-- Horários -->
-                       <Label text="7 AM" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                       <Label text="8 AM" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                       <Label text="9 AM" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                       <Label text="10 AM" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                       <Label text="11 AM" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                       <Label text="12 PM" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                       <Label text="1 PM" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                       <Label text="2 PM" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                       <Label text="3 PM" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-                       <Label text="4 PM" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-                       <Label text="5 PM" GridPane.columnIndex="0" GridPane.rowIndex="10" />
-                       <Label text="6 PM" GridPane.columnIndex="0" GridPane.rowIndex="11" />
-                       <Label text="7 PM" GridPane.columnIndex="0" GridPane.rowIndex="12" />
-                       <Label text="8 PM" GridPane.columnIndex="0" GridPane.rowIndex="13" />
-                       <Label text="9 PM" GridPane.columnIndex="0" GridPane.rowIndex="14" />
-                       <Label text="10 PM" GridPane.columnIndex="0" GridPane.rowIndex="15" />
-                       <Label text="11 PM" GridPane.columnIndex="0" GridPane.rowIndex="16" />
-                       <Label text="12 AM" GridPane.columnIndex="0" GridPane.rowIndex="17" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="11" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="12" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="13" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="14" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="15" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="16" />
+                       <Label GridPane.columnIndex="0" GridPane.rowIndex="17" />
 
 
                        <!-- Tarefas -->

@@ -7,6 +7,8 @@ import javafx.scene.paint.Color;
 import org.example.agendafacil.model.TarefaModel;
 
 import java.sql.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class TarefaController {
@@ -18,22 +20,26 @@ public class TarefaController {
     private VBox novaCategoriaBox;
 
     @FXML
-    private TextField tituloField, horaInicioField, horaFimField;
+    public TextField tituloField;
+    @FXML
+    public TextField horaInicioField;
+    @FXML
+    public TextField horaFimField;
 
     @FXML
-    private DatePicker dataPicker;
+    public DatePicker dataPicker;
 
     @FXML
-    private TextArea descricaoArea;
+    public TextArea descricaoArea;
 
     @FXML
-    private ComboBox<String> categoriaComboBox;
+    public ComboBox<String> categoriaComboBox;
 
     @FXML
     private TextField novaCategoriaField;
 
     @FXML
-    private ColorPicker corCategoriaPicker;
+    public ColorPicker corCategoriaPicker;
 
     @FXML
     public void initialize() {
@@ -61,6 +67,11 @@ public class TarefaController {
 
         String categoriaFinal = categoriaSelecionada;
         int idCategoria = -1;
+
+        if (titulo.isBlank() || data.isBlank() || horaInicio.isBlank() || horaFim.isBlank()) {
+            mostrarAlertaErro("Campos obrigatórios", "Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:script/agenda.db")) {
 
@@ -108,7 +119,22 @@ public class TarefaController {
                 if (rs.next()) {
                     idTarefa = rs.getInt(1);
                 }
+
+
+                if (idTarefa != -1 && idCategoria != -1) {
+                    String insertCriaCategoria = "INSERT INTO cria_categoria (fk_idTarefa, fk_idCategoria) VALUES (?, ?)";
+                    try (PreparedStatement stmtCriaCat = conn.prepareStatement(insertCriaCategoria)) {
+                        stmtCriaCat.setInt(1, idTarefa);
+                        stmtCriaCat.setInt(2, idCategoria);
+
+                        stmtCriaCat.executeUpdate();
+                        System.out.println("Relação tarefa-categoria salva com sucesso.");
+                    }
+                }
+
             }
+
+
 
             System.out.println("Tarefa Salva no banco:");
             System.out.println("Título: " + titulo);
@@ -120,6 +146,8 @@ public class TarefaController {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            mostrarAlertaErro("Erro ao salvar a tarefa", "Ocorreu um erro ao tentar salvar a tarefa no banco de dados.\nVerifique os dados ou tente novamente.");
+            return; // evita continuar com tarefa inválida
         }
 
         // Adiciona a tarefa na memória para o calendário
@@ -138,6 +166,26 @@ public class TarefaController {
         if (onTarefaSalva != null) {
             onTarefaSalva.run();
         }
+        mostrarAlertaSucesso("Tarefa salva", "Sua tarefa foi salva com sucesso!");
+
+
+    }
+
+    private void mostrarAlertaSucesso(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION); // <- Tipo INFO
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
+
+
+    private void mostrarAlertaErro(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 
     public void carregarCategorias() {
@@ -186,22 +234,60 @@ public class TarefaController {
     }
 
     private void aplicarMascaraHora(TextField campo) {
+        // Define uma dica visual para o usuário
+        Tooltip tooltip = new Tooltip("Digite a hora no formato HH:mm (ex: 08:30)");
+        campo.setTooltip(tooltip);
+
         campo.setTextFormatter(new TextFormatter<>(change -> {
             String novoTexto = change.getControlNewText();
 
-            // Só permite números e dois-pontos
+            // Permite apenas números e dois-pontos
             if (!novoTexto.matches("[0-9:]*")) return null;
 
             // Limita a 5 caracteres (HH:mm)
             if (novoTexto.length() > 5) return null;
 
-            // Adiciona ":" automaticamente após HH
+            // Garante que o ":" só seja inserido na terceira posição
             if (novoTexto.length() == 2 && !novoTexto.contains(":")) {
                 change.setText(change.getText() + ":");
                 change.setCaretPosition(change.getCaretPosition() + 1);
             }
 
+            // Validações adicionais opcionais:
+            if (novoTexto.length() == 5 && novoTexto.contains(":")) {
+                String[] partes = novoTexto.split(":");
+                if (partes.length == 2) {
+                    try {
+                        int hora = Integer.parseInt(partes[0]);
+                        int minuto = Integer.parseInt(partes[1]);
+
+                        if (hora < 0 || hora > 23 || minuto < 0 || minuto > 59) {
+                            return null; // valor inválido
+                        }
+                    } catch (NumberFormatException e) {
+                        return null;
+                    }
+                }
+            }
+
             return change;
         }));
     }
+
+
+    public LocalTime converterHora(String texto) {
+        try {
+            return LocalTime.parse(texto); // espera "HH:mm"
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de hora inválido: " + texto);
+            return null;
+        }
+    }
+    // No controller
+    public boolean camposValidos(String titulo, String horaInicio, String data) {
+        return titulo != null && !titulo.isBlank()
+                && horaInicio != null && horaInicio.matches("\\d{2}:\\d{2}")
+                && data != null && !data.isBlank();
+    }
+
 }

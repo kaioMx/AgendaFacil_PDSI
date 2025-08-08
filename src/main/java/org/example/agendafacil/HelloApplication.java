@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -14,7 +15,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene((Parent) fxmlLoader.load(), 1210, 700);
         stage.setTitle("AgendaFacil");
-        System.out.println(getClass().getResource("/org/example/agendafacil/imagens/logo.png"));
+        System.out.println(getClass().getResource("/org/example/agendafacil"));
+
         stage.setScene(scene);
         stage.show();
 

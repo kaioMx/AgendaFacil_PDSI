@@ -27,16 +27,25 @@
 }
 .label-dia {
     -fx-text-fill: #333333;
-    -fx-alignment: center;
     -fx-font-weight: bold;
+    -fx-padding: 0 0 0 10; /* opcional: espaçamento da borda esquerda */
 }
+
 /* Tarefa estilizada */
 .label-tarefa {
     -fx-background-radius: 20;
+    -fx-background-color: red;
     -fx-text-fill: black;
-    -fx-padding: 5 10;
+     -fx-alignment: right;
+       -fx-font-family: "Nirmala UI";
+    -fx-pref-width: 130px; /* largura mínima */
+    -fx-min-height: 20px;   /* altura mínima */
     -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
 }
+
+
 .label-icon{
        -fx-font-size: 36px;
         -fx-font-weight: bold;
