@@ -36,6 +36,9 @@ public class TarefaController {
     public ComboBox<String> categoriaComboBox;
 
     @FXML
+    public TextField horaAlarmeField;
+
+    @FXML
     private TextField novaCategoriaField;
 
     @FXML
@@ -46,6 +49,7 @@ public class TarefaController {
         carregarCategorias();
         aplicarMascaraHora(horaInicioField);
         aplicarMascaraHora(horaFimField);
+        aplicarMascaraHora(horaAlarmeField);
     }
 
     @FXML
@@ -60,6 +64,7 @@ public class TarefaController {
         String horaInicio = horaInicioField.getText();
         String horaFim = horaFimField.getText();
         String data = dataPicker.getValue() != null ? dataPicker.getValue().toString() : "";
+        String horaAlarme = horaAlarmeField.getText();
 
         String categoriaSelecionada = categoriaComboBox.getSelectionModel().getSelectedItem();
         String novaCategoria = novaCategoriaField.getText();
@@ -102,7 +107,7 @@ public class TarefaController {
                 }
             }
 
-            String insertTarefa = "INSERT INTO tarefa (fk_idUsuario, titulo, descricao, data, horaInicio, horaFim, status, somNotificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String insertTarefa = "INSERT INTO tarefa (fk_idUsuario, titulo, descricao, data, horaInicio, horaFim, horaAlarme, status, somNotificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             int idTarefa = -1;
             try (PreparedStatement stmt = conn.prepareStatement(insertTarefa, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setInt(1, 1); //usuário fixo por enquanto
@@ -111,8 +116,9 @@ public class TarefaController {
                 stmt.setString(4, data);
                 stmt.setString(5, horaInicio);
                 stmt.setString(6, horaFim);
-                stmt.setString(7, "pendente");
-                stmt.setBytes(8, null); //som ainda não implementado
+                stmt.setString(7, horaAlarme);
+                stmt.setString(8, "pendente");
+                stmt.setBytes(9, null); //som ainda não implementado
 
                 stmt.executeUpdate();
                 ResultSet rs = stmt.getGeneratedKeys();
@@ -148,6 +154,10 @@ public class TarefaController {
             e.printStackTrace();
             mostrarAlertaErro("Erro ao salvar a tarefa", "Ocorreu um erro ao tentar salvar a tarefa no banco de dados.\nVerifique os dados ou tente novamente.");
             return; // evita continuar com tarefa inválida
+        }
+
+        if (horaAlarme != null && !horaAlarme.isBlank()) {
+            System.out.println("Horário do alarme: " + horaAlarme);
         }
 
         // Adiciona a tarefa na memória para o calendário
@@ -213,6 +223,7 @@ public class TarefaController {
         dataPicker.setValue(null);
         novaCategoriaField.clear();
         categoriaComboBox.getSelectionModel().clearSelection();
+        horaAlarmeField.clear();
         corCategoriaPicker.setValue(null);
         novaCategoriaBox.setVisible(false);
         novaCategoriaBox.setManaged(false);

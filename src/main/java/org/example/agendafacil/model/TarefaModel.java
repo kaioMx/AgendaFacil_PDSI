@@ -8,6 +8,7 @@ public class TarefaModel {
     private String data;
     private String horaInicio;
     private String horaFim;
+    private String horaAlarme;
     private String status;
     private byte [] somNotificacao;
     private String corCategoria;
@@ -65,6 +66,14 @@ public class TarefaModel {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getHoraAlarme() {
+        return horaAlarme;
+    }
+
+    public void setHoraAlarme(String horaAlarme) {
+        this.horaAlarme = horaAlarme;
     }
 
     public void setStatus(String status) {
