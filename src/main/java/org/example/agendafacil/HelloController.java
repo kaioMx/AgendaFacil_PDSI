@@ -221,7 +221,7 @@ public class HelloController {
         }
     }
 
-    void carregarTarefasDoBanco() {
+    public void carregarTarefasDoBanco() {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:script/agenda.db")) {
             String sql = "SELECT " +
                     "t.idTarefa, t.titulo, t.descricao, t.data, t.horaInicio, t.horaFim, t.horaAlarme, t.status, " +
