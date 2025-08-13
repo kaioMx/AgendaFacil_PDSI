@@ -172,6 +172,16 @@ public class HelloController {
                         tarefa.getStyleClass().add("label-tarefa");
                         tarefa.setStyle("-fx-background-color: " + cor + ";"); // só define a cor da categoria
 
+                        tarefa.setOnMouseClicked(evt -> {
+                            DetalhesTarefaController.showModal(
+                                    (Stage) tarefa.getScene().getWindow(),
+                                    tarefaModel,
+                                    tarefaParaEditar -> {
+                                        // TODO: abrir tela de edição ou marcar para atualização
+                                    }
+                            );
+                        });
+
                         // Ativa o drag
                         // Ativa o drag com efeito visual da tarefa sendo arrastada
                         tarefa.setOnDragDetected(event -> {

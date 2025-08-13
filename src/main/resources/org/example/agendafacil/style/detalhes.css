@@ -7,7 +7,7 @@
     /* Plano de fundo */
     -surface: #7B12DE;
     -text: #white;
-    -muted: #b6b6c9;
+    -muted: #61A1F1;
 }
 
 /* Backdrop para modal */
@@ -18,7 +18,7 @@
 /* Card container */
 .det-card {
     -fx-background-color: #61A1F1;
-    -fx-background-radius: 10;
+    -fx-background-radius: 5;
     -fx-effect: dropshadow(gaussian,rgba(97,161,241,0.35), 18, 0.2, 0, 6);
 }
 
@@ -46,13 +46,16 @@
 
 /* Descrição (TextArea) */
 .det-desc {
-    -fx-control-inner-background: derive(-card, 6%);
+    -fx-control-inner-background: derive(-white, 6%);
     -fx-text-fill: -text;
     -fx-background-insets: 0;
     -fx-background-radius: 10;
     -fx-padding: 8;
-    -fx-border-color: derive(white, 20%);
+    -fx-border-color: #61A1F1; /* Roxo principal */
     -fx-border-radius: 10;
+    -fx-border-width: 5px; /* Aumenta a espessura da borda */
+    -fx-background-color: #black, derive(-card, 6%); /* Cor da borda preenchida + fundo */
+    -fx-background-insets: 0, 3; /* 3px corresponde à espessura da borda */
 }
 
 /* Chip de categoria */

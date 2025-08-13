@@ -63,6 +63,13 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>com.dustinredmond.fxtrayicon</groupId>
+            <artifactId>FXTrayIcon</artifactId>
+            <version>4.2.3</version>
+        </dependency>
+
+
 
     </dependencies>
 
