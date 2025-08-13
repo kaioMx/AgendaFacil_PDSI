@@ -53,7 +53,9 @@
 }
 .text-field:focused, .password-field:focused {
     -fx-background-color: transparent, white;
--fx-effect: innershadow(gaussian, rgba(0,0,0,0.8), 5, 0.8, 0, 0);
+    -fx-effect: innershadow(gaussian, rgba(90,63,209,0.8), 5, 0.8, 0, 0);
+}
+
 
 }
 

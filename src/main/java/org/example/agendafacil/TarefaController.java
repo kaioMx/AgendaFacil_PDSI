@@ -59,6 +59,8 @@ public class TarefaController {
     }
 
     public void salvarTarefa() {
+        System.out.println("DB usado: " + new java.io.File("script/agenda.db").getAbsolutePath());
+
         String titulo = tituloField.getText();
         String descricao = descricaoArea.getText();
         String horaInicio = horaInicioField.getText();
