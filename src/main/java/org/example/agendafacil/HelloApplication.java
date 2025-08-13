@@ -10,17 +10,24 @@ import java.awt.*;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene((Parent) fxmlLoader.load(), 1210, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1210, 700);
+
         stage.setTitle("AgendaFacil");
-        System.out.println(getClass().getResource("/org/example/agendafacil"));
-
         stage.setScene(scene);
-        stage.show();
 
+
+        stage.setResizable(true); // impede o redimensionamento
+        stage.centerOnScreen();    // centraliza a janela na tela
+        stage.setMaximized(true);
+
+        stage.show();
     }
+
+
 
     public static void main(String[] args) {
         launch();

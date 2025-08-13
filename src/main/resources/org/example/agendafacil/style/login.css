@@ -1,0 +1,86 @@
+/* TOKENS */
+.root {
+    -fx-background-color: #61A1F1;
+    -fx-radius:30;
+    -color-bg: #111318;
+    -color-card: #181B22;
+    -color-primary: #6B5B95;
+    -color-primary-700: #4E4470;
+    -color-accent: #0645AD;
+    -color-text: #767a74;
+    -color-text-dim: #B9B9B9;
+    -radius-lg: 20; /* subi p/ bater com o card */
+}
+
+
+
+/* Card arredondado com sombra */
+.card {
+    -fx-background-color: -color-card;
+    -fx-background-radius: -radius-lg;
+    -fx-background-insets: 0;
+    -fx-padding: 28 28 24 28;
+
+}
+
+/* Títulos */
+.logo {
+    -fx-text-fill: -color-text;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 0.3px;
+}
+.subtitle {
+    -fx-font-size: 24px;
+
+}
+
+/* Labels do form */
+.form .label {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+/* Campos */
+.text-field, .password-field {
+    -fx-background-color: transparent, white; /* fundo branco */
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 10;
+    -fx-padding: 10 12;
+    -fx-text-fill: -color-text;
+    -fx-prompt-text-fill: derive(-color-text-dim, -15%);
+    -fx-border-color: transparent;
+}
+.text-field:focused, .password-field:focused {
+    -fx-background-color: transparent, white;
+-fx-effect: innershadow(gaussian, rgba(0,0,0,0.8), 5, 0.8, 0, 0);
+
+}
+
+/* Botão principal */
+.button {
+    -fx-background-color: -color-primary;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-padding: 0 16;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+.button:armed { -fx-translate-y: 1; }
+.button:hover { -fx-background-color: -color-primary-700; }
+.button:disabled { -fx-opacity: 0.6; }
+
+/* Toggle/links */
+.text-btn {
+    -fx-background-color: white; /* se quiser transparente: transparent */
+    -fx-padding: 6 8;
+}
+.text-btn:hover { -fx-text-fill: -color-text; }
+
+.hyperlink { -fx-text-fill: -color-accent; }
+.hyperlink:hover { -fx-underline: true; }
+
+/* Status e build */
+.status { -fx-font-size: 12px; -fx-text-fill: derive(-color-accent, -15%); }
+.build  { -fx-text-fill: #808492; -fx-font-size: 11px; }
+

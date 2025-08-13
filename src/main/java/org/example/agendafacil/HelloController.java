@@ -44,8 +44,10 @@ public class HelloController {
     @FXML
     public void initialize() {
         dataInicialSemana = LocalDate.now().with(DayOfWeek.MONDAY);
-        atualizarCalendario();
         carregarTarefasDoBanco();
+        atualizarCalendario();
+
+
     }
 
     @FXML
@@ -284,6 +286,22 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+
+    private void refreshTarefas() {
+
+        gridAgenda.getChildren().removeIf(node -> {
+            Integer row = GridPane.getRowIndex(node);
+            Integer col = GridPane.getColumnIndex(node);
+            return col != null && col > 0 && row != null && row > 0;
+        });
+
+        // Atualiza calendário e recarrega tarefas
+        atualizarCalendario();
+        carregarTarefasDoBanco();
+    }
+
 
 
 

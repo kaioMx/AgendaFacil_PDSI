@@ -26,18 +26,24 @@
     -fx-background-radius: 20;
 }
 .label-dia {
-    -fx-text-fill: #333333;
+
     -fx-font-weight: bold;
+    -fx-font-family: "Montserrat ExtraBold";
+    -fx-font-smoothing-type: lcd;
+      -fx-effect: dropshadow(gaussian, #000000, 1, 0, 0, 0);
     -fx-padding: 0 0 0 10; /* opcional: espaçamento da borda esquerda */
 }
-
+@font-face {
+    src: url("fonts/Montserrat-ExtraBold.ttf");
+    font-family: "Montserrat ExtraBold";
+}
 /* Tarefa estilizada */
 .label-tarefa {
     -fx-background-radius: 20;
     -fx-background-color: red;
     -fx-text-fill: black;
-     -fx-alignment: right;
-       -fx-font-family: "Nirmala UI";
+    -fx-alignment: right;
+    -fx-font-family: "Nirmala UI";
     -fx-pref-width: 130px; /* largura mínima */
     -fx-min-height: 20px;   /* altura mínima */
     -fx-alignment: center;
@@ -82,22 +88,109 @@
 
 }
 .botao-efeito {
-    -fx-background-color: #3F51B5;
-    -fx-text-fill: white;
+
     -fx-font-weight: bold;
-    -fx-background-radius: 6;
-    -fx-cursor: hand;
-    -fx-padding: 10;
-    -fx-font-size: 24px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
-    -fx-transition: all 0.2s ease-in-out;
+    -fx-font-family: "Montserrat ExtraBold";
+    -fx-font-smoothing-type: lcd;
+    -fx-padding: 0 0 0 10;
+}
+/* Botão "Nova Tarefa" exclusivo */
+.btn-nova-tarefa {
+    -fx-font-weight: bold;
+    -fx-font-family: "Montserrat ExtraBold";
+    -fx-font-smoothing-type: lcd;
+    -fx-font-size: 30px;
+    -fx-padding: 5px 20px; /* espaço interno confortável */
+    -fx-background-radius: 12px; /* cantos arredondados */
 }
 
-.botao-efeito:hover {
-    -fx-background-color: #5C6BC0;
+/* Efeito ao pressionar */
+.btn-nova-tarefa:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-translate-y: 3px;
+    -fx-opacity: 0.9;
 }
 
-.botao-efeito:pressed {
-    -fx-background-color: #303F9F;
-    -fx-translate-y: 1.5; /* sutil, só pra dar sensação de clique */
+
+/* efeito no botão inteiro */
+.button.btn-press:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-translate-y: 3px;
+    -fx-opacity: 0.9;
+}
+
+/* opcional: mexer também na imagem dentro do botão */
+.button.btn-press:pressed .image-view {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-translate-y: 3px;
+}
+
+ #navBtnDir:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-translate-y: 3px;
+    -fx-opacity: 0.9;
+}
+#navBtnEsq:pressed {
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-translate-y: 3px;
+    -fx-opacity: 0.9;
+}
+
+/* === ScrollPane minimalista branco === */
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-padding: 0;
+}
+
+/* Remove o fundo padrão */
+.scroll-pane > .viewport {
+    -fx-background-color: white;
+}
+
+/* Barra vertical */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6px; /* largura fina */
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2); /* cinza leve */
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Barra horizontal */
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 8px;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Remove botões de rolagem */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+}
+
+#gridAgenda,
+#gridHeader,
+.vbox-centro {
+    -fx-background-color: white;
 }

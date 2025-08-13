@@ -47,9 +47,12 @@ INSERT INTO categoria (nome, cor) VALUES
 --categoria padrão
 ('Academia', '#00FF00'), -- verde
 ('Estudo', '#FFFF00'), -- amarelo
-('Trabalho', '#0000FF'); -- azul 
+('Trabalho', '#0000FF'); -- azul
 
 SELECT * FROM cria_categoria;
 
+
+SELECT * FROM tarefa
+WHERE titulo = 'joga peak com os amigos';
 
 SELECT * FROM tarefa;

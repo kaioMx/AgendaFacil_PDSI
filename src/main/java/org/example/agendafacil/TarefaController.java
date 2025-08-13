@@ -107,7 +107,7 @@ public class TarefaController {
                 }
             }
 
-            String insertTarefa = "INSERT INTO tarefa (fk_idUsuario, titulo, descricao, data, horaInicio, horaFim, horaAlarme, status, somNotificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String insertTarefa = "INSERT INTO tarefa (fk_idUsuario, titulo, descricao, data, horaInicio, horaFim, horaAlarme, status, somNotificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             int idTarefa = -1;
             try (PreparedStatement stmt = conn.prepareStatement(insertTarefa, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setInt(1, 1); //usuário fixo por enquanto
