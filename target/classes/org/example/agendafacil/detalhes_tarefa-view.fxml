@@ -16,22 +16,38 @@
         <!-- Backdrop escuro sutil -->
         <Pane styleClass="backdrop" />
 
+<<<<<<< HEAD
                                 <!-- Card principal -->
+=======
+                    <!-- Card principal -->
+>>>>>>> 64405d9a8cc89d06ca6767fb04f1c7ce4c670773
         <VBox maxWidth="560.0" prefHeight="354.0" prefWidth="582.0" spacing="16" styleClass="det-card">
             <children>
                 <!-- Cabeçalho: Título + Categoria (chip) -->
                 <HBox alignment="CENTER" spacing="12">
                     <children>
+<<<<<<< HEAD
                         <Label fx:id="labelTitulo" style="-fx-background-color: tras;" styleClass="det-title" text="Título da Tarefa" textFill="WHITE" />
+=======
+                        <Label fx:id="labelTitulo" style="-fx-background-color: #7B12DE;" styleClass="det-title" text="Título da Tarefa" textFill="WHITE" />
+>>>>>>> 64405d9a8cc89d06ca6767fb04f1c7ce4c670773
                         <Label fx:id="labelCategoria" styleClass="chip" text="Categoria" />
                     </children>
                 </HBox>
 
+<<<<<<< HEAD
                                         <!-- Horário -->
                 <HBox alignment="CENTER_LEFT" spacing="8">
                     <children>
                         <Label styleClass="det-subtitle" text="Horário:" textFill="WHITE" />
                         <Label fx:id="labelHorario" alignment="CENTER" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: White; -fx-background-radius: 10;" styleClass="det-text" text="08:00 - 09:00" textFill="#00000052">
+=======
+                            <!-- Horário -->
+                <HBox alignment="CENTER_LEFT" spacing="8">
+                    <children>
+                        <Label styleClass="det-subtitle" text="Horário:" textFill="WHITE" />
+                        <Label fx:id="labelHorario" alignment="CENTER" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: #7B12DE; -fx-background-radius: 10;" styleClass="det-text" text="08:00 - 09:00" textFill="WHITE">
+>>>>>>> 64405d9a8cc89d06ca6767fb04f1c7ce4c670773
                      <font>
                         <Font name="Bernard MT Condensed" size="12.0" />
                      </font>
@@ -49,12 +65,17 @@
                </children>
             </HBox>
 
+<<<<<<< HEAD
                                         <!-- Descrição -->
+=======
+                            <!-- Descrição -->
+>>>>>>> 64405d9a8cc89d06ca6767fb04f1c7ce4c670773
                 <VBox spacing="8">
                     <children>
                         <Label styleClass="det-subtitle" text="Descrição" textFill="#fffafa" />
                     </children>
                 </VBox>
+<<<<<<< HEAD
                   <TextArea fx:id="areaDescricao" editable="false" prefRowCount="6" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="det-desc" stylesheets="@style/detalhes.css" text="Oi mundo²¹" wrapText="true">
                <font>
                   <Font name="Nirmala UI Semilight" size="14.0" />
@@ -64,6 +85,13 @@
                                         <Separator />
 
                                         <!-- Ações -->
+=======
+                  <TextArea fx:id="areaDescricao" editable="false" prefRowCount="6" styleClass="det-desc" stylesheets="@style/detalhes.css" wrapText="true" />
+
+                            <Separator />
+
+                            <!-- Ações -->
+>>>>>>> 64405d9a8cc89d06ca6767fb04f1c7ce4c670773
                 <HBox alignment="CENTER_RIGHT" spacing="12">
                     <children>
                         <Button fx:id="btnFechar" onAction="#onFechar" styleClass="btn-primary" text="Fechar" />

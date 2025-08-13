@@ -9,7 +9,7 @@ public class ConexaoSQLiteTest {
 
     @Test
     public void testConexaoNaoNula() {
-        try (Connection conn = ConexaoSQLite.conectar()) {
+        try (Connection conn = ConexaoSQLite.abrirConexao()) {
             assertNotNull(conn, "A conexão não deve ser nula");
             assertFalse(conn.isClosed(), "A conexão deve estar aberta");
         } catch (SQLException e) {
